@@ -63,7 +63,7 @@ titik3 = Point(3,1)
 points = []
 display = []
 
-greedyqc(titik1,titik2,titik3,0,11,points,display)
+greedyqc(titik1,titik2,titik3,0,1,points,display)
 # for i in range (0,len(temp)):
 #     print(temp[i].x)
 #     print(temp[i].y)
