@@ -86,7 +86,7 @@ def midqp(t0,t1,t2,points,display):
 
         # tambah untuk display
         display.append(temp)
-    elif (len(points) == 6): # isinya 3 -> iterasi kedua -> akses 3 elemen array
+    elif (len(points) == 6): # isinya 3 -> iterasi kedua -> akses 3 elemen terakhir array
         # ambil 3 elemen
         prev1,prev2,prevcomb = threelastelements(points)
 
@@ -112,8 +112,8 @@ def midqp(t0,t1,t2,points,display):
         # masukkin display
         display.append(tcomb2)
 
-    else: # isinya banyak -> iterasi selanjutnya -> akses 6 elemen array untuk 2 titik tambahan
-        # ambil 6 elemen
+    else: # isinya banyak -> iterasi selanjutnya -> akses 6 elemen array untuk 2 titik kontrol tambahan
+        # ambil 4 elemen saja yang dibutuhkan
         prev1a,prevcomba,prev1b,prevcombb = fourusedelements(points)
 
         # titik tambahan pertama

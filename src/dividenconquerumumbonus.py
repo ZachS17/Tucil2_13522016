@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import numpy as np
+import time as time
 
 class Point:
     def __init__(self, x, y):
@@ -42,12 +42,6 @@ def greedyqcgen(narray,indeks,n,points,display): # points,display declare dari l
         points.append(narray[0])
         return narray[0] # nilai tengah akhir
     else: # sisanya hanya proses
-        if (indeks == 1):
-            print('haha salah')
-        elif (indeks == 2):
-            print('haha salah banget')
-        elif (indeks == 0):
-            print('haha apa yang terjadi')
         # untuk panggil rekursi dibagi 2, kiri dan kanan
         # print("awal banget")
         arraykiri = [narray[0]]
@@ -90,7 +84,6 @@ def greedyqcgen(narray,indeks,n,points,display): # points,display declare dari l
         displayarraypoint(arraykiri)
         displayarraypoint(arraykanan)
         displayarraypoint(narray)
-        display.append(narray[0])
         # displayarraypoint(narray)
         # displayarraypoint(arraykiri)
         # displayarraypoint(arraykanan)
@@ -110,7 +103,12 @@ temp = [titik1,titik2,titik3,titik4]
 points = []
 display = []
 
-greedyqcgen(temp,0,3,points,display)
+start_time = time.time()
+greedyqcgen(temp,0,19,points,display)
+# beberapa kali coba pake 11 aja biar minim garis yang kelihatan
+end_time = time.time()
+print("Waktu yang dibutuhkan:")
+print(end_time-start_time)
 # for i in range (0,len(temp)):
 #     print(temp[i].x)
 #     print(temp[i].y)
