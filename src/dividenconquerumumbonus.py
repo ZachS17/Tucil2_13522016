@@ -22,13 +22,13 @@ def displayarraypoint(arr):
 # dipisah sebanyak n
 # parameter array of control points
 def greedyqcgen(narray,indeks,n,points,display): # points,display declare dari luar fungsi kosong dan akan diisi
-    print("memasuki i=",indeks," dan n=",n)
+    # print("memasuki i=",indeks," dan n=",n)
     # if (n != 0 and i != n):  
     if (indeks == n-1):
         # test
-        print("sampai ke base")
-        print("array di base")
-        displayarraypoint(narray)
+        # print("sampai ke base")
+        # print("array di base")
+        # displayarraypoint(narray)
         # cari titik untuk panggil rekursi
         while (len(narray) != 1): # masih > 1 titik
             for i in range (0,len(narray)-1):
@@ -36,8 +36,8 @@ def greedyqcgen(narray,indeks,n,points,display): # points,display declare dari l
                 points.append(temp) # list point
                 narray[i] = temp # perbaiki nilai
             narray.pop() # keluarin terakhir (g dianggap lagi)
-        print("hasil narray terakhir")
-        displayarraypoint(narray)
+        # print("hasil narray terakhir")
+        # displayarraypoint(narray)
         display.append(narray[0])
         points.append(narray[0])
         return narray[0] # nilai tengah akhir
@@ -52,17 +52,17 @@ def greedyqcgen(narray,indeks,n,points,display): # points,display declare dari l
         # displayarraypoint(arraykiri)
         # displayarraypoint(arraykanan)
         while (len(narray) != 1): # masih > 1 titik
-            print("loop ke-",len(narray))
+            # print("loop ke-",len(narray))
             for i in range (0,len(narray)-1): # loop untuk gabungin titik
                 temp = midpoint(narray[i],narray[i+1])
                 narray[i] = temp # perbaiki nilai
                 points.append(temp) # list pointi
             narray.pop() # keluarin nilai terakhir (g dianggap lagi)
-            print("setelah dihapus")
-            displayarraypoint(narray)
+            # print("setelah dihapus")
+            # displayarraypoint(narray)
             for j in range (len(narray)): # loop untuk test case
-                print("yang dibandingkan")
-                print(j," ",len(narray))
+                # print("yang dibandingkan")
+                # print(j," ",len(narray))
                 if (len(narray) == 1): # tinggal satu -> dua-duanya
                     arraykiri.append(narray[j])
                     arraykanan.insert(0,narray[j])
@@ -77,13 +77,13 @@ def greedyqcgen(narray,indeks,n,points,display): # points,display declare dari l
                     elif j >= len(narray) / 2:  # 5 -> 3-4
                         arraykanan.insert(0, narray[j])
             # displayarraypoint(arraykanan)
-            displayarraypoint(arraykiri)
-            displayarraypoint(arraykanan)
-            displayarraypoint(narray)
-        print("iterasi ke-",indeks)
-        displayarraypoint(arraykiri)
-        displayarraypoint(arraykanan)
-        displayarraypoint(narray)
+        #     displayarraypoint(arraykiri)
+        #     displayarraypoint(arraykanan)
+        #     displayarraypoint(narray)
+        # print("iterasi ke-",indeks)
+        # displayarraypoint(arraykiri)
+        # displayarraypoint(arraykanan)
+        # displayarraypoint(narray)
         # displayarraypoint(narray)
         # displayarraypoint(arraykiri)
         # displayarraypoint(arraykanan)
@@ -93,36 +93,36 @@ def greedyqcgen(narray,indeks,n,points,display): # points,display declare dari l
         right_result = greedyqcgen(arraykanan, indeks + 1, n, points, display)
         return midpoint(left_result, right_result)
 
-# contoh penggunaan
-titik1 = Point(1,1)
-titik2 = Point(2,3)
-titik3 = Point(3,1)
-titik4 = Point(4,2)
-temp = [titik1,titik2,titik3,titik4]
+# # contoh penggunaan
+# titik1 = Point(1,1)
+# titik2 = Point(2,3)
+# titik3 = Point(3,1)
+# titik4 = Point(4,2)
+# temp = [titik1,titik2,titik3]
 
-points = []
-display = []
+# points = []
+# display = []
 
-start_time = time.time()
-greedyqcgen(temp,0,19,points,display)
-# beberapa kali coba pake 11 aja biar minim garis yang kelihatan
-end_time = time.time()
-print("Waktu yang dibutuhkan:")
-print(end_time-start_time)
-# for i in range (0,len(temp)):
-#     print(temp[i].x)
-#     print(temp[i].y)
-xpoints = [point.x for point in points]
-ypoints = [point.y for point in points]
+# start_time = time.time()
+# greedyqcgen(temp,0,20,points,display)
+# # beberapa kali coba pake 11 aja biar minim garis yang kelihatan
+# end_time = time.time()
+# print("Waktu yang dibutuhkan:")
+# print(end_time-start_time)
+# # for i in range (0,len(temp)):
+# #     print(temp[i].x)
+# #     print(temp[i].y)
+# xpoints = [point.x for point in points]
+# ypoints = [point.y for point in points]
 
-xdisplay = [point.x for point in display]
-ydisplay = [point.y for point in display]
+# xdisplay = [point.x for point in display]
+# ydisplay = [point.y for point in display]
 
-# Plot the curve
-plt.scatter(xdisplay, ydisplay, label='Points', color='blue', marker='.')
+# # Plot the curve
+# plt.scatter(xdisplay, ydisplay, label='Points', color='blue', marker='.')
 
-# Display the plot
-plt.show()
+# # Display the plot
+# plt.show()
 
 # if (jtitik == 2): # sisa 2 elemen
 #     arraykiri.append(temp)

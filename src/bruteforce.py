@@ -50,15 +50,6 @@ def spekqc(t0, t1, t2):
         y.append(ytemp)
     return x, y
 
-# titik tengah
-
-# iterasi 1 -> tengah t0,t1 tengah t1,t2 tengah t01,t12
-# iterasi 2 -> tengah t0,t01 tengah t1,t12 tengah t001,t112
-# iterasi 3
-
-# alternatif passing 
-# nilai (0,5,0,25,dll) point tetap sama tapi nilainya yang berbeda 
-# atau passing titik dari array yang ada
 def threelastelements(array):
     return array[-3],array[-2],array[-1]
 
@@ -69,7 +60,7 @@ def midpoint(t0,t1):
     titiktengah = Point((0.5*t0.x+0.5*t1.x),(0.5*t0.y+0.5*t1.y))
     return titiktengah
 
-def midqp(t0,t1,t2,points,display):
+def brutemidqp(t0,t1,t2,points,display):
     if (len(points) == 0): # kosong -> pertama
         # masukin control point
         points.append(t0)
@@ -151,27 +142,27 @@ def midqp(t0,t1,t2,points,display):
 # t0,t1,t2 tidak apa-apain (konstan)
 
 # i untuk berapa kali dibagi 2
-def midqc(t0,t1,t2,i):
+def brutemidqc(t0,t1,t2,i):
     points = []
     display = []
     for i in range (0,i):
-        midqp(t0,t1,t2,points,display)
+        brutemidqp(t0,t1,t2,points,display)
     return points,display
 
-# contoh penggunaan
-titik1 = Point(1,1)
-titik2 = Point(2,3)
-titik3 = Point(3,1)
+# # contoh penggunaan
+# titik1 = Point(1,1)
+# titik2 = Point(2,3)
+# titik3 = Point(3,1)
 
-allpoints,display = midqc(titik1,titik2,titik3,100)
-# for i in range (0,len(temp)):
-#     print(temp[i].x)
-#     print(temp[i].y)
-x_coordinates = [point.x for point in display]
-y_coordinates = [point.y for point in display]
+# allpoints,display = brutemidqc(titik1,titik2,titik3,100)
+# # for i in range (0,len(temp)):
+# #     print(temp[i].x)
+# #     print(temp[i].y)
+# x_coordinates = [point.x for point in display]
+# y_coordinates = [point.y for point in display]
 
-# Plot the curve
-plt.scatter(x_coordinates, y_coordinates, label='Points', color='blue', marker='.')
+# # Plot the curve
+# plt.scatter(x_coordinates, y_coordinates, label='Points', color='blue', marker='.')
 
-# Display the plot
-plt.show()
+# # Display the plot
+# plt.show()
