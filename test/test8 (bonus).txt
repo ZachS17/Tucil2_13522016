@@ -1,0 +1,6 @@
+Control Point 1: (0, 0) Control Point 6: (-1,1)
+Control Point 2: (3, 5) Control Point 7: (-2,-4)
+Control Point 3: (7, 10) Control Point 8: (-10,-5)
+Control Point 4: (10, 15) Control Point 9: (-15,5)
+Control Point 5: (15, -10) Control Point 10: (-2,-15)
+Iterasi : 4

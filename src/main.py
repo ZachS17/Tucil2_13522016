@@ -2,6 +2,7 @@ import bruteforce
 import dividenconquer
 import dividenconquerumumbonus
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 import time
 
 # inisialisasi kelas point
@@ -9,6 +10,14 @@ class Point:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
+def displaypoint(t0):
+    print(t0.x,t0.y)
+
+def displayarraypoint(arr):
+    for i in range (len(arr)):
+        displaypoint(arr[i])
+    print()
 
 while True:
     try:
@@ -95,27 +104,50 @@ display = []
 # operasi
 if (jtitik == 3 and pilihan == 1): # brute force
     startbrute = time.time()
-    points, display = bruteforce.brutemidqc(arraytitik[0],arraytitik[1],arraytitik[2],jiterasi)
+    display = bruteforce.spekqc(arraytitik[0],arraytitik[1],arraytitik[2],jiterasi)
     endbrute = time.time()
-    print("Waktu eksekusi: ",endbrute-startbrute,"detik")
+    executiontime = endbrute-startbrute
 elif (jtitik == 3 and pilihan == 2): # divide and conquer
     startdnc = time.time()
-    dividenconquer.greedyqc(arraytitik[0],arraytitik[1],arraytitik[2],0,jiterasi,points,display)
+    dividenconquer.dividenconquerqc(arraytitik[0],arraytitik[1],arraytitik[2],0,jiterasi,points,display)
     enddnc = time.time()
-    print("Waktu eksekusi: ",enddnc-startdnc,"detik")
+    executiontime = enddnc-startdnc
 else: # divide and conquer bonus
     startdncbonus = time.time()
-    dividenconquerumumbonus.greedyqcgen(arraytitik,0,jiterasi,points,display)
+    dividenconquerumumbonus.dividenconquerqcgen(arraytitik,0,jiterasi,points,display)
     enddncbonus = time.time()
-    print("Waktu eksekusi:",enddncbonus-startdncbonus,"detik")
+    executiontime = enddncbonus-startdncbonus
 
 # Pisah point
 xdisplay = [point.x for point in display]
 ydisplay = [point.y for point in display]
 
-# Plot
-plt.scatter(xdisplay, ydisplay, label='Points', color='blue', marker='.')
+# Urutkan untuk tampilan
+sorted_indices = sorted(range(len(xdisplay)), key=lambda i: xdisplay[i])
+x_values_sorted = [xdisplay[i] for i in sorted_indices]
+y_values_sorted = [ydisplay[i] for i in sorted_indices]
+
+# Plot the points
+plt.plot(x_values_sorted, y_values_sorted, marker='o', linestyle='-')
+
+plt.text(0.5, 1.05, f'Execution Time: {executiontime:.15f} seconds', transform=plt.gca().transAxes, fontsize=10)
 
 # Display
+plt.show()
+
+# Buat sumbu
+fig, ax = plt.subplots()
+
+# animasi
+def animate(frame):
+    if frame < len(display):
+        x_values = [point.x for point in display[:frame+1]]
+        y_values = [point.y for point in display[:frame+1]]
+        ax.clear()
+        ax.plot(x_values, y_values, 'bo-')
+        ax.set_xlim(min(x_values) - 1, max(x_values) + 1)
+        ax.set_ylim(min(y_values) - 1, max(y_values) + 1)
+
+ani = animation.FuncAnimation(fig, animate, frames=len(display), interval=300, blit=False)
 plt.show()
 

@@ -1,3 +1,4 @@
-0,0
-2,4
-4,0
+Control Point 1: (3, 5)
+Control Point 2: (7, 10)
+Control Point 3: (12, 6)
+Iterasi : 15
